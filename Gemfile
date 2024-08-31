@@ -3,6 +3,9 @@ source "https://rubygems.org"
 ruby "3.2.4"
 
 #
+gem "tailwindcss-rails"
+
+#
 gem 'devise'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
