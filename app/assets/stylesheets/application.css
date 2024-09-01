@@ -16,3 +16,34 @@
  @tailwind base;
  @tailwind components;
  @tailwind utilities;
+
+ *{
+    font-family: 'ubuntu';
+ }
+
+ .sing_up_input {
+    width: 100%;
+    background-color: #e9ecf8;
+    color: #000;
+    border: none;
+    outline: none;
+    padding: 0.25rem;
+}
+
+.sign_up_label {
+    @apply text-sm font-medium text-gray-700;
+}
+
+.sign_up_content {
+    background-color: #e9ecf8;
+    border-radius: 15px;
+    padding: 0.1rem 1rem;
+}
+
+.bg-primary {
+    background-color: #406afe;
+}
+
+.custom-shadow {
+    box-shadow: 0 4px 6px rgba(217, 202, 241, 0.5);
+}
