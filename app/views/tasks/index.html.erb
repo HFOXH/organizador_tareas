@@ -1,50 +1,82 @@
-<!-- app/views/tasks/index.html.erb -->
-<div class="min-h-screen bg-gray-100 p-6">
+<div class="min-h-screen test p-6">
   <div class="container mx-auto">
-    <h1 class="text-3xl font-bold mb-4">Kanban Board</h1>
-    
+    <div class="my-4 flex items-center justify-between">
+      <h1 class="text-3xl font-bold mb-4">My tasks</h1>
+      <%= link_to 'Add Task', new_task_path, class: "w-52 text-center text-white bg-blue-500 text-black rounded-lg py-2" %>
+    </div>
     <div class="flex space-x-4">
       <!-- Column: To Do -->
-      <div class="flex-1 bg-white rounded-lg shadow-md p-4 column" data-status="to_do">
+      <div class="flex-1 rounded-lg border-inherit border-2 shadow-md p-4 column" data-status="to_do">
         <h2 class="text-xl font-semibold mb-4">To Do</h2>
-        
         <% @tasks.where(status: 'to_do').each do |task| %>
-          <div class="bg-gray-200 p-4 mb-4 rounded-lg shadow-md" data-id="<%= task.id %>">
-            <h3 class="text-lg font-bold"><%= task.title %></h3>
-            <p><%= task.description %></p>
-            <p class="text-sm text-gray-500"><%= task.due_date.strftime('%b %d, %Y') %></p>
+          <div class="bg-white/30 backdrop-blur-lg border bg-opacity-60 bg-special border-white/20 p-4 mb-4 rounded-lg shadow-lg cursor-pointer" data-id="<%= task.id %>">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-bold text-black"><%= task.title %></h3> 
+              <%- if task.priority == 'high' %>
+                <p class="text-black/70 bg-red-100 text-red-600 rounded-full text-sm px-4 py-1"><%= task.priority %></p>
+              <% end %>
+              <%- if task.priority == 'medium' %>
+                <p class="text-black/70 bg-orange-100 text-orange-600 rounded-full text-sm px-4 py-1"><%= task.priority %></p>
+              <% end %>
+              <%- if task.priority == 'low' %>
+                <p class="text-black/70 bg-green-100 text-green-600 rounded-full text-sm px-4 py-1"><%= task.priority %></p>
+              <% end %>
+            </div>
+            <p class="text-black/70 text-blue-700"><%= task.category %></p>
+            <p class="text-black/70"><%= task.description %></p>
+            <p class="text-sm text-black/50"><%= task.due_date.strftime('%b %d, %Y') %></p>
           </div>
         <% end %>
       </div>
 
       <!-- Column: In Progress -->
-      <div class="flex-1 bg-white rounded-lg shadow-md p-4 column" data-status="in_progress">
+      <div class="flex-1 rounded-lg border-inherit border-2 shadow-md p-4 column" data-status="in_progress">
         <h2 class="text-xl font-semibold mb-4">In Progress</h2>
         
         <% @tasks.where(status: 'in_progress').each do |task| %>
-          <div class="bg-gray-200 p-4 mb-4 rounded-lg shadow-md" data-id="<%= task.id %>">
-            <h3 class="text-lg font-bold"><%= task.title %></h3>
-            <p><%= task.description %></p>
-            <p class="text-sm text-gray-500"><%= task.due_date.strftime('%b %d, %Y') %></p>
+          <div class="bg-white/30 backdrop-blur-lg border bg-opacity-60 bg-special border-white/20 p-4 mb-4 rounded-lg shadow-lg cursor-pointer" data-id="<%= task.id %>">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-bold text-black"><%= task.title %></h3> 
+              <%- if task.priority == 'high' %>
+                <p class="text-black/70 bg-red-100 text-red-600 rounded-full text-sm px-4 py-1"><%= task.priority %></p>
+              <% end %>
+              <%- if task.priority == 'medium' %>
+                <p class="text-black/70 bg-orange-100 text-orange-600 rounded-full text-sm px-4 py-1"><%= task.priority %></p>
+              <% end %>
+              <%- if task.priority == 'low' %>
+                <p class="text-black/70 bg-green-100 text-green-600 rounded-full text-sm px-4 py-1"><%= task.priority %></p>
+              <% end %>
+            </div>
+            <p class="text-black/70 text-blue-700"><%= task.category %></p>
+            <p class="text-black/70"><%= task.description %></p>
+            <p class="text-sm text-black/50"><%= task.due_date.strftime('%b %d, %Y') %></p>
           </div>
         <% end %>
-
-        <%= link_to 'Add Task', new_task_path, class: "mt-4 block text-center bg-blue-500 text-white rounded-lg py-2" %>
       </div>
 
       <!-- Column: Done -->
-      <div class="flex-1 bg-white rounded-lg shadow-md p-4 column" data-status="done">
+      <div class="flex-1 rounded-lg border-inherit border-2 shadow-md p-4 column" data-status="done">
         <h2 class="text-xl font-semibold mb-4">Done</h2>
         
         <% @tasks.where(status: 'done').each do |task| %>
-          <div class="bg-gray-200 p-4 mb-4 rounded-lg shadow-md" data-id="<%= task.id %>">
-            <h3 class="text-lg font-bold"><%= task.title %></h3>
-            <p><%= task.description %></p>
-            <p class="text-sm text-gray-500"><%= task.due_date.strftime('%b %d, %Y') %></p>
+          <div class="bg-white/30 backdrop-blur-lg border bg-opacity-60 bg-special border-white/20 p-4 mb-4 rounded-lg shadow-lg cursor-pointer" data-id="<%= task.id %>">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-bold text-black"><%= task.title %></h3> 
+              <%- if task.priority == 'high' %>
+                <p class="text-black/70 bg-red-100 text-red-600 rounded-full text-sm px-4 py-1"><%= task.priority %></p>
+              <% end %>
+              <%- if task.priority == 'medium' %>
+                <p class="text-black/70 bg-orange-100 text-orange-600 rounded-full text-sm px-4 py-1"><%= task.priority %></p>
+              <% end %>
+              <%- if task.priority == 'low' %>
+                <p class="text-black/70 bg-green-100 text-green-600 rounded-full text-sm px-4 py-1"><%= task.priority %></p>
+              <% end %>
+            </div>
+            <p class="text-black/70 text-blue-700"><%= task.category %></p>
+            <p class="text-black/70"><%= task.description %></p>
+            <p class="text-sm text-black/50"><%= task.due_date.strftime('%b %d, %Y') %></p>
           </div>
         <% end %>
-
-        <%= link_to 'Add Task', new_task_path, class: "mt-4 block text-center bg-blue-500 text-white rounded-lg py-2" %>
       </div>
     </div>
   </div>
