@@ -41,8 +41,11 @@ class TasksController < ApplicationController
 
   # DELETE /tasks/:id
   def destroy
-    @task.destroy
-    redirect_to tasks_url, notice: 'Task was successfully destroyed.'
+    if @task.destroy
+      head :ok
+    else
+      head :unprocessable_entity
+    end
   end
 
   private
