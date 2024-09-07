@@ -25,13 +25,13 @@
     </div>
 
     <div>
-      <%= form.label :status, class: "block text-sm font-medium text-gray-700" %>
-      <%= form.select :status, options_for_select([['To Do', 'to_do'], ['In Progress', 'in_progress'], ['Done', 'done']]), {}, class: "mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm" %>
+      <%= form.label :status, class: "block text-sm font-medium text-gray-700 hidden" %>
+      <%= form.select :status, options_for_select([['To Do', 'to_do']]), {}, class: "mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm hidden" %>
     </div>
 
     <div>
       <%= form.label :priority, class: "block text-sm font-medium text-gray-700" %>
-      <%= form.select :priority, options_for_select([['High', 'high'], ['Medium', 'medium'], ['Low', 'low'], ['Urgent', 'urgent']]), {}, class: "mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm" %>
+      <%= form.select :priority, options_for_select([['High', 'high'], ['Medium', 'medium'], ['Low', 'low']]), {}, class: "mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm" %>
     </div>
 
     <div>
