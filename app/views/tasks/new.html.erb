@@ -1,0 +1,57 @@
+<!-- app/views/tasks/new.html.erb -->
+<div class="bg-white text-gray-800 pb-8 space-y-4 shadow rounded-3xl max-w-md md:max-w-md mx-auto p-5">
+  <h1 class="text-3xl font-bold mb-6">New Task</h1>
+
+  <%= form_with(model: @task, local: true, class: "space-y-4") do |form| %>
+    <% if @task.errors.any? %>
+      <div class="bg-red-100 border border-red-400 text-red-700 p-4 rounded-lg">
+        <h2 class="font-semibold">There were errors with your submission:</h2>
+        <ul class="list-disc ml-5">
+          <% @task.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :title, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :title, class: "mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm" %>
+    </div>
+
+    <div>
+      <%= form.label :description, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_area :description, rows: 4, class: "mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm" %>
+    </div>
+
+    <div>
+      <%= form.label :status, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.select :status, options_for_select([['To Do', 'to_do'], ['In Progress', 'in_progress'], ['Done', 'done']]), {}, class: "mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm" %>
+    </div>
+
+    <div>
+      <%= form.label :priority, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.select :priority, options_for_select([['High', 'high'], ['Medium', 'medium'], ['Low', 'low'], ['Urgent', 'urgent']]), {}, class: "mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm" %>
+    </div>
+
+    <div>
+      <%= form.label :due_date, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.date_select :due_date, class: "mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm" %>
+    </div>
+
+    <div>
+      <%= form.label :category, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.text_field :category, class: "mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm" %>
+    </div>
+
+    <div>
+      <%= form.label :user_id, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.select :user_id, options_for_select(User.all.collect { |user| [user.email, user.id] }), {}, class: "mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm" %>
+    </div>
+
+    <div class="mt-4 flex justify-end">
+      <%= form.submit 'Create Task', class: "bg-blue-500 text-white px-4 py-2 rounded-lg shadow-sm cursor-pointer" %>
+      <%= link_to 'Close', tasks_path, class: "ml-4 border-blue-500 border-2 px-4 py-2 rounded-lg shadow-sm inline-block text-blue-500 hover:text-blue-700" %>
+    </div>
+  <% end %>
+</div>

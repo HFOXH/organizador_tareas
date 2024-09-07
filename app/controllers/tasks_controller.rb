@@ -32,7 +32,6 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/:id
   def update
-    @task = Task.find(params[:id])
     if @task.update(task_params)
       head :ok
     else
@@ -55,6 +54,6 @@ class TasksController < ApplicationController
 
   # Only allow a list of trusted parameters through
   def task_params
-    params.require(:task).permit(:title, :description, :status, :due_date)
+    params.require(:task).permit(:title, :description, :status, :priority, :due_date, :category, :user_id)
   end
 end
